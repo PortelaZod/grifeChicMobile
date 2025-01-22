@@ -1,45 +1,66 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import Navbar from "@/components/navbar";
+import { Slot, Stack, Tabs } from "expo-router";
+import { View, StatusBar, StyleSheet, Image } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import LinkBar from "@/components/linkBar";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+export default function Layout() {
+    return (
 
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
-  );
+        <View style={styles.main}>
+            <StatusBar backgroundColor={'black'} />
+            <Navbar />
+            <Tabs>
+
+                <Tabs.Screen
+                    name="index"
+                    options={{
+                        headerTitleAlign: 'center',
+                        title: 'Inicio',
+                        headerTitle: 'Grife Chic | Moda Masculina',
+                        headerShown:false,
+                        tabBarIcon: () => <Image style={{ width: 24, height: 24 }} source={require('@/assets/layout_imgs/suit.png')} />,
+                        // tabBarIcon: ()=> <MaterialCommunityIcons name="home" size={24} />
+                    }} />
+
+                <Tabs.Screen
+                    name="pesquisa"
+                    options={{
+                        headerShown: false,
+                        tabBarIcon: () => <MaterialCommunityIcons name="magnify" size={24} />
+                    }} />
+
+                <Tabs.Screen
+                    name="sacola"
+                    options={{
+                        title: 'Sacola',
+                        tabBarIcon: () => <MaterialCommunityIcons name="shopping" size={24} />,
+                        tabBarBadge: 5
+                    }} />
+
+                <Tabs.Screen
+                    name="login"
+                    options={{
+                        headerShown: false,
+                        title: 'Conta',
+                        tabBarIcon: () => <MaterialCommunityIcons name="account" size={24} />
+                    }} />
+
+            </Tabs>
+        </View>
+    );
 }
+
+const styles = StyleSheet.create({
+    main: {
+        flex: 1,
+        // backgroundColor: 'red'
+    },
+    header: {
+        // backgroundColor: 'red'
+    },
+    stack: {
+        // backgroundColor: 'red'
+    }
+})
