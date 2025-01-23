@@ -1,6 +1,6 @@
-import { Image, StyleSheet, View, Text, Pressable, TouchableOpacity, FlatList,Dimensions } from 'react-native';
+import { Image, StyleSheet, View, Text, Pressable, TouchableOpacity, FlatList, Dimensions } from 'react-native';
 import { router, Link } from 'expo-router';
-import { Feather, SimpleLineIcons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 import { useState } from 'react';
 
 const ViewSize = Dimensions.get('window').width
@@ -8,26 +8,7 @@ const ViewSize = Dimensions.get('window').width
 export default function Navbar() {
 
     const [relativeSize, setRelativeSize] = useState(ViewSize)
-    Dimensions.addEventListener('change', ()=> setRelativeSize(Dimensions.get('window').width))
-
-    const links = [
-        {
-            nome: 'Camisetas Nacionais',
-            id: 1
-        },
-        {
-            nome: 'Importadas',
-            id: 2
-        },
-        {
-            nome: 'Polo',
-            id: 4
-        },
-        {
-            nome: 'Bermudas e Shorts',
-            id: 5
-        },
-    ]
+    Dimensions.addEventListener('change', () => setRelativeSize(Dimensions.get('window').width))
 
     const navIconsSize: number = 24;
     const [state, setState] = useState<boolean>();
@@ -36,14 +17,17 @@ export default function Navbar() {
     return (
         <View style={styles.navbar}>
 
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
 
-                {/* <Image source={require('@/assets/layout_imgs/suit.png')} style={styles.logo} /> */}
+                <Image source={require('@/assets/layout_imgs/suit.png')} style={styles.logo} />
                 <Text style={styles.navbarBrand}>Grife Chic</Text>
 
             </View>
 
-            {links.map(link => <Link key={link.id} style={{ color: 'white', fontSize: 18, display:relativeSize < 768 ? 'none' : 'flex' }} href={'..'}>{link.nome}</Link>)}
+            <View style={{flexDirection:'row',}}>
+                <FontAwesome style={{marginHorizontal:8}} name='instagram' size={30} />
+                <FontAwesome style={{marginHorizontal:8}} name='whatsapp' size={30} />
+            </View>
 
         </View>
     );
@@ -52,8 +36,8 @@ export default function Navbar() {
 const styles = StyleSheet.create({
 
     navbar: {
-        backgroundColor: 'black',
-        height: 50,
+        backgroundColor: 'white',
+        height: 60,
         padding: 8,
         display: 'flex',
         flexDirection: 'row',
@@ -69,8 +53,8 @@ const styles = StyleSheet.create({
 
     navbarBrand: {
         fontSize: 24,
-        color: 'white',
-        userSelect:'none'
+        userSelect: 'none',
+        marginEnd: 8
     },
 
     iconsContainer: {

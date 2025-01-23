@@ -7,6 +7,8 @@ import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import Navbar from '@/components/navbar';
 import { Link } from 'expo-router';
 import Label from '@/components/label';
+import { FontAwesome } from '@expo/vector-icons';
+import LinkBar from '@/components/linkBar';
 
 
 export default function HomeScreen() {
@@ -20,6 +22,37 @@ export default function HomeScreen() {
     plus: boolean,
     colecao: string,
   }
+
+  const marcas = [
+    {
+      id:1,
+      nome: 'Tommy Hilfiger',
+    },
+    {
+      id:2,
+      nome: 'Calvin Klein',
+    },
+    {
+      id:3,
+      nome: 'Boss',
+    },
+    {
+      id:4,
+      nome: 'Jhon Jhon',
+    },
+    {
+      id:5,
+      nome: 'Lacoste',
+    },
+    {
+      id:6,
+      nome: 'Colci',
+    },
+    {
+      id:7,
+      nome: 'Reserva',
+    },
+  ]
 
   const db = getFirestore(app)
   Dimensions.addEventListener('change', () => setBannerSize(Dimensions.get('window').width))
@@ -46,14 +79,6 @@ export default function HomeScreen() {
 
       <Image style={{ width: bannerSize, height: bannerSize - (bannerSize * 0.7), margin: 'auto' }} resizeMode='cover' source={require('@/assets/layout_imgs/Carousel_whtas.jpeg')} />
 
-      <View style={{height:70, marginVertical:8,flexDirection:'row',justifyContent:'space-around'}}>
-        <Image style={{width:70,height:70}} resizeMode='contain' source={require('@/assets/layout_imgs/logos/cavalera.png')}/>
-        <Image style={{width:70,height:70}} resizeMode='contain' source={require('@/assets/layout_imgs/logos/nike.png')}/>
-        <Image style={{width:70,height:70}} resizeMode='contain' source={require('@/assets/layout_imgs/logos/adidas.png')}/>
-
-        <Image style={{width:70,height:70}} resizeMode='cover' source={require('@/assets/layout_imgs/logos/polo2.png')}/>
-      </View>
-
       <View style={{ flex: 1 }}>
         <Label name={'Camisetas nacionais'} />
         <FlatList
@@ -77,7 +102,7 @@ export default function HomeScreen() {
           } />
       </View>
 
-      <Image style={{ width: bannerSize, height: bannerSize - (bannerSize * 0.75), margin: 'auto' }} resizeMode='cover' source={require('@/assets/layout_imgs/Promo Black FRIDAY.jpeg')} />
+      <Image style={{ width: bannerSize, height: bannerSize - (bannerSize * 0.7), margin: 'auto' }} resizeMode='cover' source={require('@/assets/layout_imgs/Promo Black FRIDAY.jpeg')} />
 
       <View style={{ flex: 1 }}>
         <Label name={'Importadas fio 40.01 '} />
@@ -101,7 +126,7 @@ export default function HomeScreen() {
           } />
       </View>
 
-      <Image style={{ width: bannerSize, height: bannerSize - (bannerSize * 0.7), margin: 'auto' }} resizeMode='cover' source={require('@/assets/layout_imgs/carousel.jpeg')} />
+      {/* <Image style={{ width: bannerSize, height: bannerSize - (bannerSize * 0.7), margin: 'auto' }} resizeMode='cover' source={require('@/assets/layout_imgs/carousel.jpeg')} /> */}
 
       <View style={{ flex: 1 }}>
         <Label name={'Bermudas e Shorts'} />
@@ -114,6 +139,19 @@ export default function HomeScreen() {
           } />
       </View>
 
+      <View>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', textAlign: 'center' }}>Marcas</Text>
+        <View style={{ height: 70, marginVertical: 16, flexDirection: 'row', justifyContent: 'space-around', paddingTop: 4 }}>
+          <Image style={{ width: 70, height: 70 }} resizeMode='contain' source={require('@/assets/layout_imgs/logos/cavalera.png')} />
+          <Image style={{ width: 70, height: 70 }} resizeMode='contain' source={require('@/assets/layout_imgs/logos/nike.png')} />
+          <Image style={{ width: 70, height: 70 }} resizeMode='contain' source={require('@/assets/layout_imgs/logos/adidas.png')} />
+          <Image style={{ width: 70, height: 70 }} resizeMode='cover' source={require('@/assets/layout_imgs/logos/polo2.png')} />
+        </View>
+        <View style={{backgroundColor:'black',flexDirection:'row',flexWrap:'wrap', justifyContent:'center'}}>
+          {marcas.map(item=> <Link style={styles.links} key={item.id} href={'..'}>{item.nome}</Link>)}
+        </View>
+      </View>
+
     </ScrollView>
   );
 }
@@ -122,4 +160,10 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
   },
+  links:{
+    color:'white',
+    fontSize:20,
+    marginHorizontal:16,
+    marginVertical:16
+  }
 });

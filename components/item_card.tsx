@@ -13,7 +13,7 @@ function ItemCard(dados: ItemProps) {
     });
 
     const [mobileSize, setMobileSize] = useState({
-        width: Dimensions.get('window').width * 0.50,
+        width: Dimensions.get('window').width * 0.6,
         heigth: Dimensions.get('window').height,
     });
 
@@ -45,7 +45,7 @@ function ItemCard(dados: ItemProps) {
                         resizeMode="cover"
                         style={{
                             width: Dimensions.get('window').width <= 768 ? mobileSize.width : windowSize.width,
-                            height: Dimensions.get('window').width <= 768 ? mobileSize.width : windowSize.width + windowSize.width * 0.25
+                            height: Dimensions.get('window').width <= 768 ? mobileSize.width  : windowSize.width + windowSize.width * 0.25
                         }}
                         source={{ uri: dados.img }}>
                     </Image>

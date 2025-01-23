@@ -11,6 +11,7 @@ export default function Layout() {
         <View style={styles.main}>
             <StatusBar backgroundColor={'black'} />
             <Navbar />
+            <LinkBar/>
             <Tabs>
 
                 <Tabs.Screen

@@ -1,4 +1,5 @@
 import { Link } from "expo-router"
+
 import { View, FlatList, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native"
 
 type li = {
@@ -32,29 +33,14 @@ export default function LinkBar() {
     ]
 
     return (
-        <ScrollView
+        <FlatList
+            style={{height:50,maxHeight:50,backgroundColor:'black'}}
+            showsHorizontalScrollIndicator={false}
+            data={links}
             horizontal
             centerContent
-            showsHorizontalScrollIndicator={false}
-            >
-            {links.map(item=> <View style={styles.main}><Link href={'/'} style={styles.title}>{item.nome}</Link></View>)}
-        </ScrollView>
+            contentContainerStyle={{justifyContent:'space-around',backgroundColor:'black', alignItems:'center',}}
+            renderItem={({ item }) =>
+                <Link style={{color:'white', fontSize:18,marginHorizontal:8}} href={'..'}>{item.nome}</Link>} />
     )
 }
-
-const styles = StyleSheet.create({
-    main: {
-        backgroundColor: 'black',
-
-        display:'flex',
-        alignItems:'center'
-
-    },
-    title: {
-        color: 'white',
-        marginHorizontal: 8,
-        marginVertical: 0,
-        padding: 8,
-        fontSize: 20,
-    },
-})
