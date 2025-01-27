@@ -33,14 +33,16 @@ export default function LinkBar() {
     ]
 
     return (
-        <FlatList
-            style={{height:50,maxHeight:50,backgroundColor:'black'}}
-            showsHorizontalScrollIndicator={false}
-            data={links}
-            horizontal
-            centerContent
-            contentContainerStyle={{justifyContent:'space-around',backgroundColor:'black', alignItems:'center',}}
-            renderItem={({ item }) =>
-                <Link style={{color:'white', fontSize:18,marginHorizontal:8}} href={'..'}>{item.nome}</Link>} />
+        <View style={{paddingVertical:16,backgroundColor:'black'}}>
+            <FlatList
+                showsHorizontalScrollIndicator={false}
+                data={links}
+                horizontal
+                centerContent
+                contentContainerStyle={{ justifyContent: 'space-around', alignItems: 'center' }}
+                renderItem={({ item }) =>
+                    <Link style={{ color: 'white', fontSize: 18, marginHorizontal: 8,marginVertical:0 }} href={'..'}>{item.nome}</Link>} />
+
+        </View>
     )
 }

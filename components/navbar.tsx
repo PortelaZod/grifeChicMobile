@@ -1,6 +1,6 @@
-import { Image, StyleSheet, View, Text, Pressable, TouchableOpacity, FlatList, Dimensions } from 'react-native';
+import { Image, StyleSheet, View, Text, Pressable, TouchableOpacity, FlatList, Dimensions, TextInput } from 'react-native';
 import { router, Link } from 'expo-router';
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
 import { useState } from 'react';
 
 const ViewSize = Dimensions.get('window').width
@@ -19,16 +19,21 @@ export default function Navbar() {
 
             <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
 
-                <Image source={require('@/assets/layout_imgs/suit.png')} style={styles.logo} />
+                {/* <Image source={require('@/assets/layout_imgs/suit.png')} style={styles.logo} /> */}
                 <Text style={styles.navbarBrand}>Grife Chic</Text>
 
             </View>
 
-            <View style={{flexDirection:'row',}}>
-                <FontAwesome style={{marginHorizontal:8}} name='instagram' size={30} />
-                <FontAwesome style={{marginHorizontal:8}} name='whatsapp' size={30} />
-            </View>
+            <View style={{ flexDirection: 'row', alignItems:'center' }}>
+                <View style={{borderWidth:1, borderRadius:8,flexDirection:'row',alignItems:'center',justifyContent:'space-between',width:200,padding:4}}>
+                    <TextInput placeholder='Buscar' focusable={false} />
+                    <MaterialIcons name='search' size={20} />
+                </View>
 
+                {/* <MaterialIcons name='search' size={30} style={{ marginHorizontal: 8 }} /> */}
+                <FontAwesome style={{ marginHorizontal: 8 }} name='instagram' size={30} />
+                <FontAwesome style={{ marginHorizontal: 8 }} name='whatsapp' size={30} />
+            </View>
         </View>
     );
 }

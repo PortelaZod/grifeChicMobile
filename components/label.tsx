@@ -20,18 +20,20 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         height:40,
-        marginTop:4,
-        marginStart:4,
+        marginTop:8,
+        marginStart:16,
         marginBottom:4,
+        paddingVertical:8,
+        paddingHorizontal:8,
+        alignItems:'center',
         flexDirection:'row',
         justifyContent:'space-between',
-        alignItems:'center',
-        paddingVertical:4,
-        paddingHorizontal:8
+        borderBottomWidth:1
     },
     labelName:{
         fontSize:20,
         margin:0,
+        userSelect:'none'
     },
 
     link:{
