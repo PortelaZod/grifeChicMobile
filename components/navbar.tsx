@@ -25,14 +25,13 @@ export default function Navbar() {
             </View>
 
             <View style={{ flexDirection: 'row', alignItems:'center' }}>
-                <View style={{borderWidth:1, borderRadius:8,flexDirection:'row',alignItems:'center',justifyContent:'space-between',width:200,padding:4}}>
-                    <TextInput placeholder='Buscar' focusable={false} />
-                    <MaterialIcons name='search' size={20} />
-                </View>
 
-                {/* <MaterialIcons name='search' size={30} style={{ marginHorizontal: 8 }} /> */}
+
+
+                <MaterialIcons name='search' size={30} style={{ marginHorizontal: 8 }} />
                 <FontAwesome style={{ marginHorizontal: 8 }} name='instagram' size={30} />
                 <FontAwesome style={{ marginHorizontal: 8 }} name='whatsapp' size={30} />
+
             </View>
         </View>
     );
@@ -42,7 +41,6 @@ const styles = StyleSheet.create({
 
     navbar: {
         backgroundColor: 'white',
-        height: 60,
         padding: 8,
         display: 'flex',
         flexDirection: 'row',
@@ -59,7 +57,8 @@ const styles = StyleSheet.create({
     navbarBrand: {
         fontSize: 24,
         userSelect: 'none',
-        marginEnd: 8
+        marginEnd: 8,
+        fontWeight:'bold'
     },
 
     iconsContainer: {

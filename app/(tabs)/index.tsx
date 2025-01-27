@@ -136,6 +136,8 @@ export default function HomeScreen() {
 
         <Image style={{ width: bannerSize, height: bannerSize - (bannerSize * 0.7), margin: 'auto' }} resizeMode='cover' source={require('@/assets/layout_imgs/Carousel_whtas.jpeg')} />
 
+        <Text style={{backgroundColor:'black',color:'white',fontSize:18,paddingVertical:8,textAlign:'center',fontWeight:'bold',userSelect:'none'}}>Todas as Compras no Pix com 5% de desconto !</Text>
+
         <View style={{ flex: 1 }}>
           <Label name={'Camisetas nacionais'} />
           <FlatList

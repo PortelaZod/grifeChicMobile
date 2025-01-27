@@ -2,7 +2,7 @@ import { router } from "expo-router";
 import { memo, useEffect, useState } from "react";
 import { View, Image, Text, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
 
-export type ItemProps = { name: string, img: string, cod: string, grade: string[], preco: string, black:boolean };
+export type ItemProps = { name: string, img: string, cod: string, grade: string[], preco: string, black: boolean };
 
 
 function ItemCard(dados: ItemProps) {
@@ -41,11 +41,11 @@ function ItemCard(dados: ItemProps) {
             <TouchableOpacity onPress={() => console.log(dados)}>
                 <View style={{ overflow: 'hidden' }}>
                     <Image
-                        onLoadEnd={()=> setDisplay(false)}
+                        onLoadEnd={() => setDisplay(false)}
                         resizeMode="cover"
                         style={{
                             width: Dimensions.get('window').width <= 768 ? mobileSize.width : windowSize.width,
-                            height: Dimensions.get('window').width <= 768 ? mobileSize.width  : windowSize.width + windowSize.width * 0.25
+                            height: Dimensions.get('window').width <= 768 ? mobileSize.width : windowSize.width + windowSize.width * 0.25
                         }}
                         source={{ uri: dados.img }}>
                     </Image>
@@ -57,7 +57,7 @@ function ItemCard(dados: ItemProps) {
                     <Text style={styles.itemGrade}>{dados.grade.toString().replaceAll(',', ' | ')}</Text>
                     <Text style={styles.itemDesconto}>{`R$ ${valorDesconto.toFixed(2)}`}</Text>
                     <Text style={styles.itemPreco}>{`R$ ${dados.preco}`}</Text>
-                    <Text style={styles.itemParcelado}>{`3x ${valor.toFixed(2)}`}</Text>
+                    <Text style={styles.itemParcelado}>{`3x R$ ${valor.toFixed(2)}`}</Text>
                 </View>
             </TouchableOpacity>
 
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
 
     cardBody: {
         minWidth: 137,
-        flex:1
+        flex: 1
     },
 
     itemNome: {
@@ -91,16 +91,20 @@ const styles = StyleSheet.create({
 
     itemGrade: {
         fontSize: 14,
+        color: '#B00101',
+        marginStart:8,
+        fontWeight:'bold'
     },
     itemDesconto: {
         fontSize: 14,
         textDecorationLine: 'line-through',
         // color:'#a5abb0ff',
-        opacity:.6
+        opacity: .6
     },
 
     itemPreco: {
-        fontSize: 14
+        fontSize: 14,
+        fontWeight: 'bold'
     },
 
     itemParcelado: {
