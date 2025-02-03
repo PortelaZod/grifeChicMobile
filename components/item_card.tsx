@@ -53,7 +53,7 @@ function ItemCard(dados: ItemProps) {
 
                 <View style={[styles.cardBody]}>
                     <Text style={[styles.itemNome, { width: Dimensions.get('window').width <= 768 ? mobileSize.width : windowSize.width, }]}>{dados.name}</Text>
-                    {/* <Text style={styles.itemCod}>{dados.cod}</Text> */}
+                    <Text style={styles.itemCod}>{dados.cod}</Text>
                     <Text style={styles.itemGrade}>{dados.grade.toString().replaceAll(',', ' | ')}</Text>
                     <Text style={styles.itemDesconto}>{`R$ ${valorDesconto.toFixed(2)}`}</Text>
                     <Text style={styles.itemPreco}>{`R$ ${dados.preco}`}</Text>
@@ -87,12 +87,12 @@ const styles = StyleSheet.create({
 
     itemCod: {
         fontSize: 14,
+        opacity:.6
     },
 
     itemGrade: {
         fontSize: 14,
         color: '#B00101',
-        marginStart:8,
         fontWeight:'bold'
     },
     itemDesconto: {

@@ -1,4 +1,4 @@
-import { Link } from "expo-router"
+import { Link, router } from "expo-router"
 
 import { View, FlatList, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native"
 
@@ -41,7 +41,7 @@ export default function LinkBar() {
                 centerContent
                 contentContainerStyle={{ justifyContent: 'space-around', alignItems: 'center' }}
                 renderItem={({ item }) =>
-                    <Link style={{ color: 'white', fontSize: 18, marginHorizontal: 8,marginVertical:0 }} href={'..'}>{item.nome}</Link>} />
+                    <Link style={{ color: 'white', fontSize: 18, marginHorizontal: 8,marginVertical:0 }} href={'..'} >{item.nome}</Link>} />
 
         </View>
     )

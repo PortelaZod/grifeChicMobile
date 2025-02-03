@@ -20,15 +20,21 @@ export default function Navbar() {
             <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
 
                 {/* <Image source={require('@/assets/layout_imgs/suit.png')} style={styles.logo} /> */}
-                <Text style={styles.navbarBrand}>Grife Chic</Text>
+
+                <TouchableOpacity onPress={()=> router.replace('/')}>
+                    <Text style={styles.navbarBrand}>Grife Chic</Text>
+                </TouchableOpacity>
+
 
             </View>
 
-            <View style={{ flexDirection: 'row', alignItems:'center' }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
 
 
+                <TouchableOpacity onPress={() => (router.push('/buscar'))}>
+                    <MaterialIcons name='search' size={30} style={{ marginHorizontal: 8 }} />
+                </TouchableOpacity>
 
-                <MaterialIcons name='search' size={30} style={{ marginHorizontal: 8 }} />
                 <FontAwesome style={{ marginHorizontal: 8 }} name='instagram' size={30} />
                 <FontAwesome style={{ marginHorizontal: 8 }} name='whatsapp' size={30} />
 
@@ -46,6 +52,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        zIndex: 0
     },
 
     logo: {
@@ -58,7 +65,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         userSelect: 'none',
         marginEnd: 8,
-        fontWeight:'bold'
+        fontWeight: 'bold'
     },
 
     iconsContainer: {

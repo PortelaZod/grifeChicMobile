@@ -9,6 +9,8 @@ import { Link } from 'expo-router';
 import Label from '@/components/label';
 import { FontAwesome } from '@expo/vector-icons';
 import LinkBar from '@/components/linkBar';
+import SearchBar from '@/components/searchBar';
+import Footer from '@/components/footer';
 
 
 export default function HomeScreen() {
@@ -23,85 +25,6 @@ export default function HomeScreen() {
     colecao: string,
   }
 
-  const marcas = [
-    {
-      id: 1,
-      nome: 'Tommy Hilfiger',
-    },
-    {
-      id: 2,
-      nome: 'Calvin Klein',
-    },
-    {
-      id: 3,
-      nome: 'Boss',
-    },
-    {
-      id: 4,
-      nome: 'Jhon Jhon',
-    },
-    {
-      id: 5,
-      nome: 'Lacoste',
-    },
-    {
-      id: 6,
-      nome: 'Colci',
-    },
-    {
-      id: 7,
-      nome: 'Reserva',
-    },
-  ]
-
-  const tamanhos = [
-    {
-      id: 1,
-      tam: 'P'
-    },
-    {
-      id: 2,
-      tam: 'M'
-    },
-    {
-      id: 3,
-      tam: 'G'
-    },
-    {
-      id: 4,
-      tam: 'GG'
-    },
-    {
-      id: 8,
-      tam: '38'
-    },
-    {
-      id: 9,
-      tam: '39'
-    },
-    {
-      id: 10,
-      tam: '40'
-    },
-    {
-      id: 11,
-      tam: '41'
-    },
-    {
-      id: 12,
-      tam: '42'
-    },
-    {
-      id: 13,
-      tam: '44'
-    },
-    {
-      id: 14,
-      tam: 'Plus Size'
-    },
-
-
-  ]
 
   const db = getFirestore(app)
   Dimensions.addEventListener('change', () => setBannerSize(Dimensions.get('window').width))
@@ -110,7 +33,6 @@ export default function HomeScreen() {
   const [bannerSize, setBannerSize] = useState(Dimensions.get('window').width);
 
   useEffect(() => {
-
     async function firebaseDados() {
       const data: itens[] = []
       const querySnapshot = await getDocs(collection(db, 'grife_chic'))
@@ -122,9 +44,7 @@ export default function HomeScreen() {
 
   return (
     <View style={{ flex: 1 }}>
-
       <Navbar />
-
       <LinkBar />
 
       <ScrollView
@@ -132,11 +52,9 @@ export default function HomeScreen() {
         style={styles.container}
       >
 
-
-
         <Image style={{ width: bannerSize, height: bannerSize - (bannerSize * 0.7), margin: 'auto' }} resizeMode='cover' source={require('@/assets/layout_imgs/Carousel_whtas.jpeg')} />
 
-        <Text style={{backgroundColor:'black',color:'white',fontSize:18,paddingVertical:8,textAlign:'center',fontWeight:'bold',userSelect:'none'}}>Todas as Compras no Pix com 5% de desconto !</Text>
+        <Text style={{ backgroundColor: 'black', color: 'white', fontSize: 18, paddingVertical: 8, textAlign: 'center', fontWeight: 'bold', userSelect: 'none' }}>Todas as Compras no Pix com 5% de desconto !</Text>
 
         <View style={{ flex: 1 }}>
           <Label name={'Camisetas nacionais'} />
@@ -161,6 +79,8 @@ export default function HomeScreen() {
             } />
         </View>
 
+        <Image style={{ width: bannerSize, height: bannerSize - (bannerSize * 0.7), margin: 'auto' }} resizeMode='cover' source={require('@/assets/layout_imgs/Promo Black FRIDAY.jpeg')} />
+
         <View style={{ flex: 1 }}>
           <Label name={'Importadas fio 40.01 '} />
           <FlatList centerContent={true}
@@ -183,8 +103,6 @@ export default function HomeScreen() {
             } />
         </View>
 
-        {/* <Image style={{ width: bannerSize, height: bannerSize - (bannerSize * 0.7), margin: 'auto' }} resizeMode='cover' source={require('@/assets/layout_imgs/carousel.jpeg')} /> */}
-
         <View style={{ flex: 1 }}>
           <Label name={'Bermudas e Shorts'} />
           <FlatList centerContent={true}
@@ -196,34 +114,11 @@ export default function HomeScreen() {
             } />
         </View>
 
-        <View style={{ marginBottom: 8 }}>
+        <Image style={{ width: bannerSize, height: bannerSize - (bannerSize * 0.7), margin: 'auto' }} resizeMode='cover' source={require('@/assets/layout_imgs/carousel.jpeg')} />
 
-          <Text style={{ fontSize: 20, fontWeight: 'bold', textAlign: 'center', userSelect: 'none', marginVertical: 8 }}>Tamanhos</Text>
-
-          <View style={{ backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
-            {tamanhos.map(item => <Link style={styles.links} key={item.id} href={'..'}>{item.tam}</Link>)}
-          </View>
-
-        </View>
-
-        {/* <Image style={{ width: bannerSize, height: bannerSize - (bannerSize * 0.7), margin: 'auto' }} resizeMode='cover' source={require('@/assets/layout_imgs/Promo Black FRIDAY.jpeg')} /> */}
-
-        <View>
-          <Text style={{ fontSize: 20, fontWeight: 'bold', textAlign: 'center', userSelect: 'none', marginTop: 8 }}>Marcas</Text>
-          <View style={{ height: 70, marginVertical: 16, flexDirection: 'row', justifyContent: 'space-around', paddingTop: 4 }}>
-            <Image style={{ width: 70, height: 70 }} resizeMode='contain' source={require('@/assets/layout_imgs/logos/cavalera.png')} />
-            <Image style={{ width: 70, height: 70 }} resizeMode='contain' source={require('@/assets/layout_imgs/logos/nike.png')} />
-            <Image style={{ width: 70, height: 70 }} resizeMode='contain' source={require('@/assets/layout_imgs/logos/adidas.png')} />
-            <Image style={{ width: 70, height: 70 }} resizeMode='cover' source={require('@/assets/layout_imgs/logos/polo2.png')} />
-          </View>
-          <View style={{ backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
-            {marcas.map(item => <Link style={styles.links} key={item.id} href={'..'}>{item.nome}</Link>)}
-          </View>
-        </View>
+        <Footer />
 
       </ScrollView>
-
-      {/* <Image source={require('@/assets/layout_imgs/whats.png')} style={{ width: 55, height: 55, position: 'absolute', bottom:0, right:0, margin: 8 }} /> */}
     </View>
   );
 }
@@ -232,10 +127,4 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
   },
-  links: {
-    color: 'white',
-    fontSize: 20,
-    marginHorizontal: 16,
-    marginVertical: 16
-  }
 });

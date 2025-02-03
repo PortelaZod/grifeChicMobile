@@ -1,7 +1,7 @@
 import Navbar from "@/components/navbar";
 import { Slot, Stack, Tabs } from "expo-router";
 import { View, StatusBar, StyleSheet, Image } from "react-native";
-import { MaterialCommunityIcons,MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import LinkBar from "@/components/linkBar";
 
 
@@ -13,6 +13,7 @@ export default function Layout() {
                 <Tabs.Screen
                     name="index"
                     options={{
+                        tabBarShowLabel: false,
                         headerTitleAlign: 'center',
                         title: 'Inicio',
                         headerTitle: 'Grife Chic | Moda Masculina',
@@ -22,8 +23,10 @@ export default function Layout() {
                     }} />
 
                 <Tabs.Screen
+
                     name="sacola"
                     options={{
+                        tabBarShowLabel: false,
                         title: 'Sacola',
                         tabBarIcon: () => <MaterialIcons name="shopping-bag" size={24} />,
                         tabBarBadge: 5
@@ -32,9 +35,15 @@ export default function Layout() {
                 <Tabs.Screen
                     name="login"
                     options={{
+                        tabBarShowLabel: false,
                         headerShown: false,
                         title: 'Conta',
                         tabBarIcon: () => <MaterialIcons name="account-circle" size={24} />
+                    }} />
+
+                    <Tabs.Screen name="buscar"  options={{
+                        headerShown:false,
+                        href:null
                     }} />
 
             </Tabs>
