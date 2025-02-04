@@ -41,10 +41,11 @@ export default function Layout() {
                         tabBarIcon: () => <MaterialIcons name="account-circle" size={24} />
                     }} />
 
-                    <Tabs.Screen name="buscar"  options={{
-                        headerShown:false,
-                        href:null
-                    }} />
+                <Tabs.Screen name="buscar" options={{
+                    headerShown: false,
+                    href: null,
+                    tabBarShowLabel: false
+                }} />
 
             </Tabs>
         </View>

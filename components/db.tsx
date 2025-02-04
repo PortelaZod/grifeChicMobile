@@ -14,7 +14,7 @@ type itens = {
 
 export default class DB {
 
-    moda;
+    moda: string
 
     constructor(moda: string) {
         this.moda = moda
@@ -26,10 +26,6 @@ export default class DB {
         const querySnapshot = await getDocs(collection(db, this.moda))
         querySnapshot.forEach(item => data.push(item.data() as itens))
         return data;
-    }
-
-    log(){
-        console.log('oi')
     }
 
 }

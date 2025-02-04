@@ -25,7 +25,6 @@ export default function Navbar() {
                     <Text style={styles.navbarBrand}>Grife Chic</Text>
                 </TouchableOpacity>
 
-
             </View>
 
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>

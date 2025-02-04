@@ -33,7 +33,7 @@ export default function LinkBar() {
     ]
 
     return (
-        <View style={{paddingVertical:16,backgroundColor:'black'}}>
+        <View style={{ paddingVertical: 16, backgroundColor: 'black' }}>
             <FlatList
                 showsHorizontalScrollIndicator={false}
                 data={links}
@@ -41,7 +41,7 @@ export default function LinkBar() {
                 centerContent
                 contentContainerStyle={{ justifyContent: 'space-around', alignItems: 'center' }}
                 renderItem={({ item }) =>
-                    <Link style={{ color: 'white', fontSize: 18, marginHorizontal: 8,marginVertical:0 }} href={'..'} >{item.nome}</Link>} />
+                    <Link style={{ color: 'white', fontSize: 18, marginHorizontal: 8, marginVertical: 0 }} href={'..'} >{item.nome}</Link>} />
 
         </View>
     )

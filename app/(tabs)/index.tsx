@@ -1,15 +1,11 @@
 import ItemCard from '@/components/item_card';
-import { Image, StyleSheet, Platform, View, Text, StatusBar, ScrollView, FlatList, Button, Dimensions, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, View, Text, ScrollView, FlatList, Dimensions } from 'react-native';
 import { app } from '@/components/firebase';
-import { Children, JSXElementConstructor, ReactElement, ReactNode, ReactPortal, useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
-import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import Navbar from '@/components/navbar';
-import { Link } from 'expo-router';
 import Label from '@/components/label';
-import { FontAwesome } from '@expo/vector-icons';
 import LinkBar from '@/components/linkBar';
-import SearchBar from '@/components/searchBar';
 import Footer from '@/components/footer';
 
 
@@ -61,10 +57,11 @@ export default function HomeScreen() {
           <FlatList
             centerContent={true}
             horizontal
+            contentContainerStyle={{columnGap:4,marginInline:4}}
             showsHorizontalScrollIndicator={false}
             data={state?.filter(item => item.colecao == 'NACIONAL').slice(0, 4)}
             renderItem={({ item }) =>
-              <ItemCard img={item.img} name={item.name} preco={item.preco} cod={item.cod} grade={item.grade} black={false} />
+              <ItemCard  img={item.img} name={item.name} preco={item.preco} cod={item.cod} grade={item.grade}  />
             } />
         </View>
 
@@ -72,10 +69,11 @@ export default function HomeScreen() {
           <Label name={'Importadas malha Peruana'} />
           <FlatList centerContent={true}
             horizontal
+            contentContainerStyle={{columnGap:4,marginInline:4}}
             showsHorizontalScrollIndicator={false}
             data={state?.filter(item => item.colecao == 'IMPORTADAS_PERUANAS').slice(0, 4)}
             renderItem={({ item }) =>
-              <ItemCard img={item.img} name={item.name} preco={item.preco} cod={item.cod} grade={item.grade} black={false} />
+              <ItemCard img={item.img} name={item.name} preco={item.preco} cod={item.cod} grade={item.grade}  />
             } />
         </View>
 
@@ -85,10 +83,11 @@ export default function HomeScreen() {
           <Label name={'Importadas fio 40.01 '} />
           <FlatList centerContent={true}
             horizontal
+            contentContainerStyle={{columnGap:4,marginInline:4}}
             showsHorizontalScrollIndicator={false}
             data={state?.filter(item => item.colecao == 'IMPORTADAS_40.01').slice(0, 4)}
             renderItem={({ item }) =>
-              <ItemCard img={item.img} name={item.name} preco={item.preco} cod={item.cod} grade={item.grade} black={true} />
+              <ItemCard img={item.img} name={item.name} preco={item.preco} cod={item.cod} grade={item.grade} />
             } />
         </View>
 
@@ -96,10 +95,11 @@ export default function HomeScreen() {
           <Label name={'Camisetas Polo'} />
           <FlatList centerContent={true}
             horizontal
+            contentContainerStyle={{columnGap:4,marginInline:4}}
             showsHorizontalScrollIndicator={false}
             data={state?.filter(item => item.colecao == 'CAMISETAS_POLO').slice(0, 4)}
             renderItem={({ item }) =>
-              <ItemCard img={item.img} name={item.name} preco={item.preco} cod={item.cod} grade={item.grade} black={true} />
+              <ItemCard img={item.img} name={item.name} preco={item.preco} cod={item.cod} grade={item.grade} />
             } />
         </View>
 
@@ -107,10 +107,11 @@ export default function HomeScreen() {
           <Label name={'Bermudas e Shorts'} />
           <FlatList centerContent={true}
             horizontal
+            contentContainerStyle={{columnGap:4,marginInline:4}}
             showsHorizontalScrollIndicator={false}
             data={state?.filter(item => item.colecao == 'BERMUDAS_E_SHORTS').slice(0, 4)}
             renderItem={({ item }) =>
-              <ItemCard img={item.img} name={item.name} preco={item.preco} cod={item.cod} grade={item.grade} black={false} />
+              <ItemCard img={item.img} name={item.name} preco={item.preco} cod={item.cod} grade={item.grade}  />
             } />
         </View>
 

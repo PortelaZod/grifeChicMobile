@@ -2,7 +2,7 @@ import { router } from "expo-router";
 import { memo, useEffect, useState } from "react";
 import { View, Image, Text, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
 
-export type ItemProps = { name: string, img: string, cod: string, grade: string[], preco: string, black: boolean };
+export type ItemProps = { name: string, img: string, cod: string, grade: string[], preco: string };
 
 
 function ItemCard(dados: ItemProps) {
@@ -13,7 +13,7 @@ function ItemCard(dados: ItemProps) {
     });
 
     const [mobileSize, setMobileSize] = useState({
-        width: Dimensions.get('window').width * 0.6,
+        width: Dimensions.get('window').width * 0.49,
         heigth: Dimensions.get('window').height,
     });
 
@@ -25,7 +25,7 @@ function ItemCard(dados: ItemProps) {
         })
 
         setMobileSize({
-            width: Dimensions.get('window').width * 0.43,
+            width: Dimensions.get('window').width * 0.49,
             heigth: Dimensions.get('window').height,
         })
     })
@@ -37,7 +37,8 @@ function ItemCard(dados: ItemProps) {
     const [display, setDisplay] = useState(true);
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {}]}>
+            
             <TouchableOpacity onPress={() => console.log(dados)}>
                 <View style={{ overflow: 'hidden' }}>
                     <Image
@@ -69,7 +70,8 @@ export default ItemCard
 
 const styles = StyleSheet.create({
     container: {
-        margin: 4,
+        marginHorizontal:'0.5%',
+        marginBlockEnd:8,
         overflow: 'hidden',
         backgroundColor: 'white',
     },
