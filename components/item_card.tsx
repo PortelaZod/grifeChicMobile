@@ -71,7 +71,7 @@ export default ItemCard
 const styles = StyleSheet.create({
     container: {
         marginHorizontal:'0.5%',
-        marginBlockEnd:8,
+        marginBlock:8,
         overflow: 'hidden',
         backgroundColor: 'white',
     },
